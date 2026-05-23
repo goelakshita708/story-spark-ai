@@ -23,7 +23,7 @@ export const subscribe = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (err: any) {
     if (err.code === 11000) {
-      return res.status(400).json({
+      return res.status(409).json({
         message: "This email is already subscribed.",
       });
     }

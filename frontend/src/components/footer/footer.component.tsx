@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logoNew.png";
 
@@ -170,6 +170,7 @@ if (!email || !emailRegex.test(email)) {
             </p>
             <form
               onSubmit={handleSubscribe}
+              noValidate
               className="group/form mt-0.5 flex items-center rounded-xl border border-white/[0.08] bg-[#0D1630]/60 p-1 backdrop-blur-sm transition-all duration-300 focus-within:border-blue-500/30 focus-within:shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_0_16px_rgba(59,130,246,0.06)]"
             >
               <span className="shrink-0 pl-3 text-slate-500 text-[13px]">
@@ -193,15 +194,18 @@ if (!email || !emailRegex.test(email)) {
               </button>
             </form>
 
-            {status === "success" && (
-              <p className="text-[12.5px] text-green-400 mt-1">{message}</p>
-            )}
-            {status === "error" && (
-              <p className="text-[12.5px] text-red-400 mt-1">{message}</p>
-            )}
-            {status === "loading" && (
-              <p className="text-[12.5px] text-blue-400 mt-1">Subscribing...</p>
-            )}
+            <div aria-live="polite" role="status">
+  {status === "success" && (
+    <p className="text-[12.5px] text-green-400 mt-1">{message}</p>
+  )}
+  {status === "error" && (
+    <p className="text-[12.5px] text-red-400 mt-1" aria-live="assertive">{message}</p>
+  )}
+  {status === "loading" && (
+    <p className="text-[12.5px] text-blue-400 mt-1">Subscribing...</p>
+  )}
+</div>
+
           </div>
         </div>
 
