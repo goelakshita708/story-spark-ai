@@ -113,11 +113,8 @@ const HeroSectionComponent = () => {
                 </Link>
               </div>
             </div>
-
-            </div>
-            </div>
-            
-          
+          </div>
+        </div>
 
         <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
           <div className="hero-cursor-stars absolute inset-0" aria-hidden="true">
