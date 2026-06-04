@@ -151,7 +151,6 @@ const LoginComponent = () => {
             </div>
             <SSButton text="Sign In" type="submit" isLoading={isBusy} />
           </form>
-
           <div className="mt-6 relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-slate-200"></div>
