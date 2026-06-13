@@ -35,6 +35,33 @@ const PostDetailsComponent = () => {
       toast.error("You need to login to perform this action");
     }
   };
+  const shareUrl = window.location.href;
+
+const handleTwitterShare = () => {
+  const text = encodeURIComponent(post?.title || "");
+  const url = encodeURIComponent(shareUrl);
+
+  window.open(
+    `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+    "_blank"
+  );
+};
+
+const handleLinkedInShare = () => {
+  const url = encodeURIComponent(shareUrl);
+
+  window.open(
+    `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+    "_blank"
+  );
+};
+
+const handleEmailShare = () => {
+  const subject = encodeURIComponent(post?.title || "");
+  const body = encodeURIComponent(shareUrl);
+
+  window.location.href = `mailto:?subject=${subject}&body=${body}`;
+};
 
   if (isLoading) {
     return <LoadingAnimation />;
@@ -117,12 +144,30 @@ const PostDetailsComponent = () => {
                 )}
               </div>
               <div className="flex items-center space-x-4">
-                <button className="text-gray-600 hover:text-custom">
-                  <i className="fab fa-twitter"></i>
-                </button>
-                <button className="text-gray-600 hover:text-custom">
-                  <i className="fab fa-linkedin"></i>
-                </button>
+              
+     <div className="flex items-center space-x-4">
+  <button
+    onClick={handleTwitterShare}
+    className="text-gray-600 hover:text-custom"
+  >
+    <i className="fab fa-twitter"></i>
+  </button>
+
+  <button
+    onClick={handleLinkedInShare}
+    className="text-gray-600 hover:text-custom"
+  >
+    <i className="fab fa-linkedin"></i>
+  </button>
+
+  <button
+    onClick={handleEmailShare}
+    className="text-gray-600 hover:text-custom"
+  >
+    <i className="far fa-envelope"></i>
+  </button>
+</div>
+
                 <button className="text-gray-600 hover:text-custom">
                   <i className="far fa-envelope"></i>
                 </button>
